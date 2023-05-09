@@ -29,7 +29,7 @@ GitHubのリポジトリにアップしているものはgradle buildが通っ�
 
 このコードを各サブプロジェクトの役割ごとに分散した時にgradle buildのエラーが発生するため、調査中。
 
-(やることメモ)
+(やることメモ)  
 ・サーバー側のプログラムを一通り実装する。AOPによる例外処理を@AfterThrowingで実施する。  
 validation無し: @RequestBody  
 validation有り: @RequestBody @Validated  
@@ -60,7 +60,7 @@ Eclipseの利用は廃止し、Visual Studio Codeの利用に移行しました�
 
 インストーラーの設定については特に変わったことはしなく、標準通りです。  
 GitHub Desktopは個人用の設定が必要になります。  
-現在、GitHubの更新にはGitHub Desktopで操作しています。Visual Studio Codeで連携予定です。  
+現在、GitHubのリポジトリ更新にはGitHub Desktopで操作しています。Visual Studio Codeで連携予定です。  
 
 | 項目 | 説明 |
 | :--- | :--- |
@@ -89,17 +89,14 @@ lc_messages = 'en_US'
 
 変更後はサービスを再起動します。  
 
-SpringBootで使用するデータベースを準備します。  
-
-#### (データベース作成)
+## データベースについて
 このリポジトリはdefaultで存在するpostgresを指定しています。  
 
 ## user-interfaceプロジェクトのDB接続準備
 このSpringBootを実行するためにはDB接続設定が必要なため、   
-user_interfaceプロジェクトのapplication.propertiesを編集します。  
+user-interfaceプロジェクトのjpa.propertiesを編集します。  
+application.propertiesでなく、jpa.propertiesとして、DB接続情報を分けています。(検討中)  
 ローカルPCのPostgreSQLに合わせた設定をして下さい。  
-
-設定が正しくないとSpringBootは起動できません。(わかりにくいエラーが出ます)  
 
 ```application.properties
 # Spring database configuration
@@ -109,7 +106,8 @@ spring.datasource.username=postgres
 spring.datasource.password=xxxx
 ```
 
-このコードがある状態でSpringBootをデバッグ起動すると、Entityがあって、DBに存在しないテーブルが自動で作成されます。  
+このコードがある状態でSpringBootをデバッグ起動すると、  
+Entityがあって、DBに存在しないテーブルが自動で作成されます。  
 ※ただし不要なテーブルは削除されません。
 
 ## Gradle buildをする
@@ -120,11 +118,10 @@ gradle-multi-project/memo/4.gradleビルドエラーする時の確認するこ�
 
 作業はビルドが通るか確認しながら進めて下さい。 
 
-## 正しく準備できた場合のEclipse
-Gradle build後、SPRING BOOT DASHBOARDからuser-interfaceプロジェクトを実行してデバッグします。  
+## デバッグ実行
+正しく準備できた場合、Gradle build後、SPRING BOOT DASHBOARDからuser-interfaceプロジェクトを実行してデバッグします。  
 
 「http://localhost:8080」 を開くとログイン画面が表示されます。  
-
 
 ## SpringBootプロジェクトでのNode.jsの利用方法
 調査中。  
