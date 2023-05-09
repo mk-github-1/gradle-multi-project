@@ -72,7 +72,7 @@ GitHub Desktopは個人用の設定が必要になります。
 | Node.js 18.13.0 | javascriptライブラリの管理とWebpackを利用するものです。 |
 
 ## Visual Studio Codeの拡張機能・表示カスタマイズ
-Visual Studio Codeの拡張機能・表示カスタマイズは下記を参照して下さい。  
+Visual Studio Codeの拡張機能・表示カスタマイズについては下記を参照して下さい。  
 
 gradle-multi-project/memo/1.vscodeプラグイン.txt  
 gradle-multi-project/memo/2.エクスプローラーの表示カスタマイズ.txt  
@@ -111,7 +111,7 @@ Entityがあって、DBに存在しないテーブルが自動で作成されま
 ※ただし不要なテーブルは削除されません。
 
 ## Gradle buildをする
-Gradle buildは下記を参照して下さい。 
+Gradle buildの手順は下記を参照して下さい。 
 
 gradle-multi-project/memo/3.Gradleの使い方.txt  
 gradle-multi-project/memo/4.gradleビルドエラーする時の確認すること.txt  
