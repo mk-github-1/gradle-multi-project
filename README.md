@@ -95,13 +95,14 @@ lc_messages = 'en_US'
 ## データベースについて
 このリポジトリはdefaultで存在するpostgresを指定しています。  
 
-## user-interfaceプロジェクトのDB接続準備
+## DB接続準備
 このSpringBootを実行するためにはDB接続設定が必要なため、   
 user-interfaceプロジェクトのjpa.propertiesを編集します。  
-application.propertiesでなく、jpa.propertiesとして、DB接続情報を分けています。(検討中)  
+通常のapplication.propertiesはDB以外の用途に使用したいため、jpa.propertiesにDB接続情報を分けています。
 ローカルPCのPostgreSQLに合わせた設定をして下さい。  
+設定はinfrastructureで読み込めるように設定してあります。
 
-```application.properties
+```jpa.properties
 # Spring database configuration
 spring.datasource.driver-class-name=org.postgresql.Driver
 spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
