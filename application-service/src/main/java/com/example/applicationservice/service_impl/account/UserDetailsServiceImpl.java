@@ -1,4 +1,4 @@
-package com.example.userinterface.config;
+package com.example.applicationservice.service_impl.account;
 
 import java.util.*;
 
@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;
 
 import com.example.domainmodel.entity.account.LoginUser;
+import com.example.domainservice.repository.account.LoginUserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

@@ -1,4 +1,4 @@
-package com.example.userinterface.config;
+package com.example.infrastructure.repository.account;
 
 import java.util.*;
 // import java.util.concurrent.CompletableFuture;
@@ -15,6 +15,7 @@ import jakarta.persistence.EntityManagerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.example.domainmodel.entity.account.LoginUser;
+import com.example.domainservice.repository.account.LoginUserRepository;
 
 // コードはコンパイルを通すための下書きです。
 

@@ -1,4 +1,4 @@
-package com.example.userinterface.config;
+package com.example.domainservice.repository.account;
 
 import java.util.*;
 
