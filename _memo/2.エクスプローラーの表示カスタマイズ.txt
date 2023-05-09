@@ -12,22 +12,19 @@ VS Codeを開き、左側のメニューから「設定」をクリックしま�
 **/Thumbs.db
 
 (追加設定)
+**/.bin
+**/.build
+**/.gitattributes
+**/.gitignore
 **/.gradle
 **/.vscode
 **/build
 **/bin
 **/gradle
-
-**/.gitattributes
-**/.gitignore
 **/gradlew
 **/gradlew.bat
-
-// 不要？
-.gradle
-**/.bin
-**/.build
-LICENSE
+**/HELP.md
+**/LICENSE
 
 
 ※その他、必要に応じて追加する
