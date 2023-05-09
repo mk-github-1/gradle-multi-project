@@ -1,0 +1,33 @@
+VS Codeのエクスプローラーで表示する項目をカスタマイズするには、次の手順を実行してください。
+
+VS Codeを開き、左側のメニューから「設定」をクリックします。
+検索バーに「files.exclude」と入力し、結果から「Files: Exclude」を選択します。
+
+(デフォルト設定)
+**/.git
+**/.svn
+**/.hg
+**/.CVS
+**/.DS_Store
+**/Thumbs.db
+
+(追加設定)
+**/.gradle
+**/.vscode
+**/build
+**/bin
+**/gradle
+
+**/.gitattributes
+**/.gitignore
+**/gradlew
+**/gradlew.bat
+
+// 不要？
+.gradle
+**/.bin
+**/.build
+LICENSE
+
+
+※その他、必要に応じて追加する

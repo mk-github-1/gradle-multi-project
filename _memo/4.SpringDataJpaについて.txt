@@ -1,0 +1,53 @@
+4.SpringDataJpaについて
+
+(共通事項)
+・関連削除をしたくない場合は、cascade = CascadeType.PERSISTにします。
+・orphanRemoval = trueはリストの時に関連削除する
+・@JoinColumnの name = "自身の外部キー", referencedColumnName = "参照先の主キー"
+・@JoinColumnの insertable = false、updatable = false は関連追加、関連更新をしないとわかっているときは必ず設定します。
+・Master系からTransaction系を参照しないようにすること。
+  Transaction系でリストを持ちたければTransaction系の中間テーブルを用意します。
+
+1. OneToOne、JoinColumn
+基本的な形です。OneToOne、JoinColumnのセットで使用します。
+nameには自身のEntityが持つ外部キーを指定します。
+referencedColumnNameには子のEntityが持つキーを指定します。(ここでは子の主キーとしています。)
+
+- 例 -
+@OneToOne(cascade = CascadeType.PERSIST)
+@JoinColumn(name = "employee_id", referencedColumnName = "id", insertable = false, updatable = false) 
+private Employee employee;
+
+--
+
+2. OneToMany
+自身のEntityが子のEntityをリストで持ちたい時に使用します。
+ManyToOneのみで使用します。リストなのでキーの設定はありませんが、子のEntity側で設定する必要があります。
+オプションは一般的な設定です。
+子の関連削除をしたくない場合は、cascade = CascadeType.PERSISTに変更する必要があります。
+
+- 例 -
+@OneToMany(mappedBy = "loginUser", cascade = CascadeType.ALL, orphanRemoval = true)
+private Set<LoginUserRole> loginUserRoles = new HashSet<>();
+--
+
+3. ManyToOne、JoinColumn
+親のEntityが子のEntityをリストで持つ時、子のEntity側で使用します。
+ManyToOne、JoinColumnのセットで使用します。
+nameにはEntityが持つ外部キーを指定します。
+referencedColumnNameには子のEntityが持つキーを指定します。
+(参照先が複合主キーの場合があるので、referencedColumnNameは必ず設定したほうが良さそうです)
+
+- 例 -
+@ManyToOne(cascade = CascadeType.PERSIST)
+@JoinColumn(name = "role_id", referencedColumnName = "role_id", insertable = false, updatable = false)
+private Role role;
+--
+
+
+4. ManyToMany
+例は用意していません。実装が複雑になりますので、なるべく使用しないようにしましょう。
+ManyToManyはせずに、中間テーブルを用意し、複合主キーを持たせてOneToMany×2で代用しましょう。
+
+
+5. その他?

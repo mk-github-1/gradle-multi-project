@@ -1,0 +1,42 @@
+VS CodeでJava、Gradle、Spring Boot、Node.js、Webpack、React、TypeScriptを使用する際に
+便利な拡張機能のリスト。
+
+Java Extension Pack:
+Java開発に必要な一連の拡張機能を提供します。例えば、Javaの実行、デバッグ、自動補完、コード生成などが含まれます。
+
+Gradle for Java:
+Javaプロジェクトのビルド、テスト、デプロイをサポートするGradleビルドシステムの拡張機能です。
+
+Gradle Language Support?:
+Gradleビルドスクリプトの編集を支援する拡張機能です。構文のハイライト、コード補完、エラー検出、タスクの実行などが含まれます。
+
+Spring Boot Extension Pack:
+Spring Bootアプリケーションの開発に必要な一連の拡張機能を提供します。例えば、Spring Bootの実行、自動補完、コード生成、デバッグなどが含まれます。
+
+Debugger for Chrome:
+Chromeブラウザで実行されているJavaScriptをデバッグするための拡張機能です。Node.jsやReactアプリケーションもデバッグ可能です。
+
+ESLint:
+JavaScriptやTypeScriptのコード品質を向上させるための静的解析ツールです。コードスタイルやエラーの検出、コードの自動修正などが含まれます。
+
+Prettier - Code formatter:
+コードフォーマッターで、コードを一貫したスタイルに整形します。コードの可読性を向上させることができます。
+
+Path Intellisense:
+ファイルパスの入力支援を提供する拡張機能です。ファイルやフォルダ名の自動補完や、相対パスの入力をサポートしています。
+
+Live Server:
+開発中のWebアプリケーションをローカルサーバーで実行することができます。コードの変更を自動的に反映させ、ブラウザで確認できます。
+
+Node.js Extension Pack:
+Node.js開発に必要な一連の拡張機能を提供します。例えば、Node.jsの実行、パッケージマネージャーであるnpmの使用、デバッグなどが含まれます。
+
+Reactjs code snippets:
+Reactコンポーネントのコードを素早く生成することができます。
+
+TypeScript Importer:
+TypeScriptファイルで使用されるモジュールのインポートを自動的に解決するための拡張機能です。
+
+Webpack:
+webpackの構成ファイルを編集するためのシンタックスハイライトや、Webpack Dev Serverの起動、ビルドの実行などが含まれます。
+

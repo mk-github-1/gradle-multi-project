@@ -1,0 +1,20 @@
+npm・webpackの使い方
+
+1. Node.jsのインストール
+実行後、コマンドプロンプトで実行できるか確認。
+node -v
+
+実行できなければ再起動が必要かも
+
+2. typescriptのインストール
+npm install -g typescript
+
+3. package.jsonを準備する
+このGitHubのRepositoryのものを使用する。必要なものは後で追加する。
+
+4. tsconfig.json
+このGitHubのRepositoryのものを使用する。必要なものは後で追加する。
+
+5. webpack.config.jsを準備する
+このGitHubのRepositoryのものを使用する。必要なものは後で追加する。
+

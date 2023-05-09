@@ -1,0 +1,56 @@
+VS CodeはGradleアイコンからコマンドを打たなくても実行できる。
+
+依存関係の追加時は、上位のサブプロジェクトから個別にビルドしないとエラーすると思われる
+
+プロジェクトを個別にビルドするとエラーしないことも多いので、ビルドエラーの原因不明時は個別にチェックする
+
+・バージョン確認
+gradle -v　または　./gradlew.bat -v
+
+・ビルドを手動で実行する場合
+gradle build　または　./gradlew.bat build
+gradle clean build　または　./gradlew.bat clean build
+
+・依存関係の追加
+gradle clean build --refresh-dependencies
+または　./gradlew.bat clean build --refresh-dependencies
+
+gradle build --warning-mode all
+
+----------
+
+以下はあまり使わないけどメモ
+
+・Gradleのキャッシュ削除
+C:\Users<ユーザー名>.gradle\caches
+
+または　gradle cleanBuildCache
+または　./gradlew.bat cleanBuildCache
+
+・Gradleバージョンアップ
+gradle wrapper --gradle-version=？
+または　./gradlew.bat wrapper --gradle-version=？
+
+・Gradle依存関係の自動更新の設定追加　※正しいかは？
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
+・Springの依存関係グラフを調べる
+http://localhost:8080/actuator/dependencies
+
+・ハッシュパスワード0000
+Hashed Password: $2a$10$XoTNNlYlYHn2vmfMnmJhU.1M78uA6oOTKj4J9iu.nBeVSwUu1YjyS
+
+--------------------------------------------------
+
+・Javaプログラムを実行
+java <プログラム名>
+
+・実行中のプロセスの一覧を表示します。
+ps -ef
+ps -ef | grep java
+
+・プロセスを停止
+kill <プロセスID>
+
