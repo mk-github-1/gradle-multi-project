@@ -40,6 +40,8 @@ validation有り: @RequestBody @Validated
 
 ・データ保存時の作成日時、更新日時の更新、競合チェック処理を追加する。  
 
+・application-serviceで追加、更新、削除時にトランザクションを使用できるようにする。
+
 ・非同期処理に対応する。WebFluxと@Asyncの組み合わせ？(クライアント側はjavascript管理下で、axiosで対応予定。)
 
 ・Node.jsのnpmでnode_modulesをインストール、webpackを利用できるようにする。  
