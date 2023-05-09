@@ -25,12 +25,16 @@ Visual Studio Code, pgAdmin 4
 #### (進め方と課題)  
 
 GitHubのリポジトリにアップしているものはgradle buildが通っているものです。  
-ログイン画面まで表示できます。
+ログイン画面まで表示できます。  
 
-このコードを各サブプロジェクトの役割ごとに分散した時にgradle buildのエラーが発生するため、調査中。
+5/10 Entity見直し中。DB用の初期データをビルド時に追加できるように準備中。
 
 (やることメモ)  
-・サーバー側のプログラムを一通り実装する。AOPによる例外処理を@AfterThrowingで実施する。  
+・LoginUser関係でEntityを使用しているが、Modelを中間に入れる。
+
+・サーバー側のプログラムを一通り実装する。AOPによる例外処理を@AfterThrowingで実施する。 
+
+・ControllerののValidationの設定方法
 validation無し: @RequestBody  
 validation有り: @RequestBody @Validated  
 
@@ -43,7 +47,6 @@ webpack.config.jsの設定をして、javascriptをモジュールとして使�
 
 ・LoginUserの一覧・登録画面を準備する  
 ユーザー登録、本人確認、パスワードリマインダーなど  
-
 ・メインのindex.htmlは共通テンプレートとして作成が必要。  
 
 ・Reactを利用してSPA対応、React routerで画面切り替えをできるようにする。  
@@ -106,10 +109,6 @@ spring.datasource.username=postgres
 spring.datasource.password=xxxx
 ```
 
-このコードがある状態でSpringBootをデバッグ起動すると、  
-Entityがあって、DBに存在しないテーブルが自動で作成されます。  
-※ただし不要なテーブルは削除されません。
-
 ## Gradle buildをする
 Gradle buildの手順は下記を参照して下さい。 
 
@@ -122,6 +121,10 @@ gradle-multi-project/memo/4.gradleビルドエラーする時の確認するこ�
 正しく準備できた場合、Gradle build後、SPRING BOOT DASHBOARDからuser-interfaceプロジェクトを実行してデバッグします。  
 
 「http://localhost:8080」 を開くとログイン画面が表示されます。  
+  
+Entityがあって、DBに存在しないテーブルが自動で作成されます。  
+ただし不要なテーブルは削除されません。  
+ログインに必要なデータは自動追加する予定です。
 
 ## SpringBootプロジェクトでのNode.jsの利用方法
 調査中。  
