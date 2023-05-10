@@ -36,7 +36,9 @@ validation有り: @RequestBody @Validated
 
 ・データ保存時の作成日時、更新日時の更新、競合チェック処理を追加する。  
 
-・application-serviceで追加、更新、削除時にトランザクションを使用できるようにする。
+・application-serviceで追加、更新、削除時にトランザクションを使用できるようにする。  
+
+・メインのindex.htmlは共通テンプレートとして作成が必要。  
 
 ・非同期処理に対応する。WebFluxと@Asyncの組み合わせ？(クライアント側はjavascript管理下で、axiosで対応予定。)
 
@@ -45,7 +47,6 @@ webpack.config.jsの設定をして、javascriptをモジュールとして使�
 
 ・LoginUserの一覧・登録画面を準備する  
 ユーザー登録、本人確認、パスワードリマインダーなど  
-・メインのindex.htmlは共通テンプレートとして作成が必要。  
 
 ・Reactを利用してSPA対応、React routerで画面切り替えをできるようにする。  
 
