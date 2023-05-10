@@ -45,8 +45,9 @@ validation有り: @RequestBody @Validated
 ・Node.jsのnpmでnode_modulesをインストール、webpackを利用できるようにする。  
 webpack.config.jsの設定をして、javascriptをモジュールとして使用できるようにする。    
 
-・LoginUserの一覧・登録画面を準備する  
-ユーザー登録、本人確認、パスワードリマインダーなど  
+・LoginUser登録機能を作成する  
+LoginUserの一覧・登録画面を準備する  
+他の機能として、ユーザー登録、本人確認、パスワードリマインダーなど  
 
 ・Reactを利用してSPA対応、React routerで画面切り替えをできるようにする。  
 
