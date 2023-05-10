@@ -1,18 +1,23 @@
 gradleビルドエラーする時の確認すること
 
-・依存関係の追加時は、上位のサブプロジェクトから個別にビルドしないとエラーすると思われる
+・このメッセージが表示されている場合は、このファイルにエラーの詳細が記載されているので確認します。
+There were failing tests. See the report at: 
+file:///C:/Users/user/vscode-workspace/gradle-multi-project/user-interface/build/reports/tests/test/index.html
+
+
+・依存関係の追加時は、上位のサブプロジェクトから個別にビルドしないとエラーする可能性あり
 プロジェクトを個別にビルドするとエラーしないことも多いので、ビルドエラーの原因不明時は個別にチェックする
 
 ・依存関係のバージョンがおかしいか、存在しないものを追加している。
 依存関係の追加・削除は慎重に行う必要がある。
-chatgptにきくとたまにないものを教えられるので注意
+chatgptにきくとたまにないものを教えられるので注意。
 
 ・PostgreSQLがインストールされていない、またはデータベース名が存在しない。
 PostgreSQLをインストールし、データベースを作成する。
-user-interfaceプロジェクトのapplication.propertiesと一致していることを確認する。
+user-interfaceプロジェクトにはjpa.propertiesにDB接続情報を記載しているので、一致していることを確認する。
 
 ・Spring Data Jpaに関係するEntityの設定が間違っている。
 プロパティ、関連プロパティの設定を見直してください。
 
 ・Spring DIが失敗する。
-各プロジェクトのcomponent scanが失敗しているかも
+各プロジェクトのcomponent scanが失敗しているかもしれない。現在は改善してます。

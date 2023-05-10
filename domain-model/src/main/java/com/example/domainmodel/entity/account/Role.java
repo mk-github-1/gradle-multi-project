@@ -1,6 +1,6 @@
 package com.example.domainmodel.entity.account;
 
-import java.util.*;
+import java.time.OffsetDateTime;
 
 import jakarta.persistence.*;
 
@@ -13,13 +13,16 @@ import jakarta.persistence.*;
 public class Role {
 	@Id
 	@Column(length = 32)
-	private String role_id;
+	private String roleId;
 
-	@Column(nullable = false)
-	private Date created_at;
+	@Column(length = 256, nullable = false)
+	private String roleName;
 
-	@Column(nullable = false)
-	private Date updated_at;
+    @Column(nullable = false)
+    private OffsetDateTime createdAt;
+
+    @Column(nullable = false)
+    private OffsetDateTime updatedAt;
 
 	@Version
 	@Column(nullable = false)

@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Please sign in</title>
-    <!-- Bootstrap5に更新する -->
+    <!-- Node.jsを使用し、ローカルのBootstrap5に更新する -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
   </head>
@@ -17,14 +17,18 @@
         <h2 class="form-signin-heading">Please sign in (test)</h2>
         <p>
           <label for="username" class="sr-only">Username</label>
-          <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
+          <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus value="user">
         </p>
         <p>
           <label for="password" class="sr-only">Password</label>
-          <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+          <input type="password" id="password" name="password" class="form-control" placeholder="Password" required value="0000">
         </p>
         <input name="_csrf" type="hidden" value="KsN50rKBGbMPvmlRYjoQ8bkjWOl7vCSpopSi09Z3h_CL6j4hGfFNtIq2KdYi3VxnUhckxNtFdYhI2hGExKaT5-9CssK43g9D" />
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <p>
+          自習用アプリとして初期値を設定<br />
+          username: user, password: 0000
+        </p>
       </form>
     </div>
   </body>

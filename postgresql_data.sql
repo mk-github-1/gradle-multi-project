@@ -5,6 +5,8 @@ DELETE FROM public.user_role;
 DELETE FROM public.login_user;
 DELETE FROM public.role;
 
+DELETE FROM public.person;
+
 --------------------------------------------------
 
 -- role --

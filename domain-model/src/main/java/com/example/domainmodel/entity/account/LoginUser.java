@@ -1,12 +1,23 @@
 package com.example.domainmodel.entity.account;
 
-import java.util.*;
+import java.time.OffsetDateTime;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.*;
+
+/*
+import org.hibernate.boot.Metadata;
+import org.hibernate.tool.schema.extract.internal.SequenceInformationExtractorNoOpImpl;
+import org.hibernate.tool.schema.spi.Exporter;
+import org.hibernate.tool.schema.spi.SchemaCreator;
+import org.hibernate.tool.schema.spi.Target;
+ */
 
 /**
  * LoginUser
@@ -20,13 +31,13 @@ public class LoginUser implements UserDetails {
 	public LoginUser(
 		String username,
 		String password,
-		Collection<? extends GrantedAuthority> authorities,
+		// Collection<? extends GrantedAuthority> authorities,
         boolean accountNonExpired,
         boolean accountNonLocked,
         boolean credentialsNonExpired,
         boolean enabled,
-        Date created_at,
-        Date updated_at,
+        OffsetDateTime createdAt,
+        OffsetDateTime updatedAt,
         long timestamp
 		) {
 
@@ -37,8 +48,8 @@ public class LoginUser implements UserDetails {
         this.accountNonLocked = accountNonLocked;
         this.credentialsNonExpired = credentialsNonExpired;
         this.enabled = enabled;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
         this.timestamp = timestamp;
 	}
 
@@ -49,7 +60,7 @@ public class LoginUser implements UserDetails {
 	@Column(length = 256, nullable = false)
 	private String password;
 
-    // private Collection<? extends GrantedAuthority> authorities;
+    // private Collection<? extends GrantedAuthority> authorities = new HashSet<>();
 
 	@Column(nullable = false)
     private boolean accountNonExpired;
@@ -63,17 +74,18 @@ public class LoginUser implements UserDetails {
 	@Column(nullable = false)
     private boolean enabled;
 
-	@Column(nullable = false)
-	private Date created_at;
+    @Column(nullable = false)
+    private OffsetDateTime createdAt;
 
-	@Column(nullable = false)
-	private Date updated_at;
+    @Column(nullable = false)
+    private OffsetDateTime updatedAt;
 
 	@Version
 	@Column(nullable = false)
 	private long timestamp;
-
+    
     @OneToMany(mappedBy = "loginUser", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OrderColumn
     private Set<LoginUserRole> loginUserRoles = new HashSet<>();
     
 	@Override

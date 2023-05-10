@@ -1,6 +1,6 @@
 package com.example.domainmodel.entity.account;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 import jakarta.persistence.*;
 
@@ -17,14 +17,14 @@ public class LoginUserRole {
 	private String username;
 
 	@Id
-	@Column(length = 256, nullable = false)
-	private String role_id;
+	@Column(length = 32, nullable = false)
+	private String roleId;
 
-	@Column(nullable = false)
-	private Date created_at;
+    @Column(nullable = false)
+    private OffsetDateTime createdAt;
 
-	@Column(nullable = false)
-	private Date updated_at;
+    @Column(nullable = false)
+    private OffsetDateTime updatedAt;
 
 	@Version
 	@Column(nullable = false)
@@ -35,10 +35,10 @@ public class LoginUserRole {
     private LoginUser loginUser;
     
     @ManyToOne
-    @JoinColumn(name = "role_id", referencedColumnName = "role_id", insertable = false, updatable = false)
+    @JoinColumn(name = "roleId", referencedColumnName = "roleId", insertable = false, updatable = false)
     private Role role;
 
 	public String getRoleId() {
-    	return role_id;
+    	return roleId;
     }
 }

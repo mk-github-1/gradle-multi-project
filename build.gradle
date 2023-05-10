@@ -50,6 +50,8 @@ project(":user-interface") {
 		implementation project(':domain-model')
 		implementation project(':domain-service')
 		implementation project(':application-service')
+
+		// user-interfaceにはinfrastructureが必要
 		implementation project(':infrastructure')
 
     	implementation 'org.springframework.boot:spring-boot-starter-actuator:3.0.5'
