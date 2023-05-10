@@ -75,9 +75,9 @@ out/
 
 ### VS Code ###
 .vscode/
+.bin
 
 # ★node_modulesの除外★ #############################################
-
-/user-interface/node_modules
-/user-interface/package-lock.json
+node_modules
+package-lock.json
 
