@@ -26,7 +26,7 @@ GitHubのリポジトリにアップしているものはgradle buildが通っ�
 5/10 Entity見直し中。DB用の初期データをビルド時に追加できるように準備中。
 
 (やることメモ)  
-・LoginUser関係でEntityを使用しているが、Modelを中間に入れる。
+・LoginUser関係でRepositoryにEntityを使用しているので、Modelを中継させる。
 
 ・サーバー側のプログラムを一通り実装する。AOPによる例外処理を@AfterThrowingで実施する。 
 
@@ -39,6 +39,8 @@ validation有り: @RequestBody @Validated
 ・application-serviceで追加、更新、削除時にトランザクションを使用できるようにする。  
 
 ・メインのindex.htmlは共通テンプレートとして作成が必要。  
+
+・Controllerには、SpringBootのメソッドセキュリティを使用する。  
 
 ・非同期処理に対応する。WebFluxと@Asyncの組み合わせ？(クライアント側はjavascript管理下で、axiosで対応予定。)
 
