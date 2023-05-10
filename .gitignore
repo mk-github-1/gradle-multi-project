@@ -75,7 +75,8 @@ out/
 
 ### VS Code ###
 .vscode/
-.bin
+/.bin
+gradle/
 
 # ★node_modulesの除外★ #############################################
 node_modules
