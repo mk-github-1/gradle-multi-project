@@ -1,14 +1,11 @@
 ## SpringBoot3 × Node.js(typescript, React)の自習用リポジトリ
-
 gradleマルチプロジェクトで、SpringBoot3 × Node.js(typescript, React)の  
 Webアプリケーションを作成するための自習用リポジトリです。  
 
 クライアント側はReactのシングルページアプリケーション(javascript管理下)で動き、  
 アプリケーションはログイン認証機能を持ち、サーバー側はAPIとして受付し、  
 DBの操作を行うことができるアプリケーションを構築します。  
-誰にでも理解しやすいシンプルな構成、設定であるものを構築したいと思います。   
-
-自習が終わった頃には実務でも使えそうな一通りの技術は、何となく使えるようになっているかも。  
+誰にでも理解しやすいシンプルな構成、設定であるものを構築します。   
 
 #### (扱う技術としては下記を考えています)
 Java(JDK17), SpringBoot3, PostgreSQL 15, Gradle 7.6, Node.js, typescript, React18, html, css, Bootstrap5  
@@ -23,7 +20,6 @@ Visual Studio Code, pgAdmin 4
 
 
 #### (進め方と課題)  
-
 GitHubのリポジトリにアップしているものはgradle buildが通っているものです。  
 ログイン画面まで表示できます。  
 
@@ -83,7 +79,6 @@ gradle-multi-project/memo/1.vscodeプラグイン.txt
 gradle-multi-project/memo/2.エクスプローラーの表示カスタマイズ.txt  
 
 ## PostgreSQL設定  
-
 Eclipseデバッグ実行時にコンソールで文字化けするので対策のため、  
 postgresの「C:\Program Files\PostgreSQL\15\data/postgresql.conf」を修正します。  
 
@@ -131,4 +126,5 @@ Entityがあって、DBに存在しないテーブルが自動で作成されま
 
 ## SpringBootプロジェクトでのNode.jsの利用方法
 調査中。  
+現在ネット上からjavascriptライブラリを読み込みしています。
  
