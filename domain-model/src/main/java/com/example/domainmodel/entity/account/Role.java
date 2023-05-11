@@ -11,6 +11,10 @@ import jakarta.persistence.*;
 @Entity
 @Table(name="role")
 public class Role {
+	public Role() {
+
+	}
+	
 	@Id
 	@Column(length = 32)
 	private String roleId;

@@ -13,7 +13,7 @@
   </head>
   <body>
     <div class="container">
-      <form class="form-signin" method="post" action="/login">
+      <form class="form-signin" method="post" action="index.html" th:action="@{/login}">
         <h2 class="form-signin-heading">Please sign in (test)</h2>
         <p>
           <label for="username" class="sr-only">Username</label>
@@ -23,8 +23,7 @@
           <label for="password" class="sr-only">Password</label>
           <input type="password" id="password" name="password" class="form-control" placeholder="Password" required value="0000">
         </p>
-        <input name="_csrf" type="hidden" value="KsN50rKBGbMPvmlRYjoQ8bkjWOl7vCSpopSi09Z3h_CL6j4hGfFNtIq2KdYi3VxnUhckxNtFdYhI2hGExKaT5-9CssK43g9D" />
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
         <p>
           自習用アプリとして初期値を設定<br />
           username: user1@example.com, password: 0000

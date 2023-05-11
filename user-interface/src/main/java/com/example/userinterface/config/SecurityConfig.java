@@ -25,23 +25,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        /*
-         * "/css/**"などはアクセス可能
-         * "/login", "logout"は全許可
-         * "/rolename"はhasRoleのユーザーのみアクセス可能
-         * 他のページはログイン済みユーザーのみ許可
-         */
         http
-            .authorizeHttpRequests(requests -> requests
-                .requestMatchers(PathRequest.toStaticResources()
-                    .atCommonLocations()).permitAll()                   
-                .requestMatchers("/login").permitAll() 
-                .requestMatchers("/logout").permitAll()
-                // .requestMatchers("/system_administrator").hasRole("SYSTEM_ADMINISTRATOR")
-                // .requestMatchers("/administrator").hasRole("ADMINISTRATOR")
-                // .requestMatchers("/general").hasRole("GENERAL") 
-                .anyRequest().authenticated()
-            )
             /*
              * ログイン情報の処理URL
              * ログイン画面のhtml
@@ -58,10 +42,22 @@ public class SecurityConfig {
             )
             // ログアウト成功後のリダイレクトURL
             .logout(logout -> logout
-                .logoutSuccessUrl("/logout")
+                .logoutSuccessUrl("/")
             )
-            // userDetailsService
-            .userDetailsService(userDetailsService);                    
+            /*
+             * "/css/**"などはアクセス可能
+             * "/login", "logout"は全許可
+             * "/rolename"はhasRoleのユーザーのみアクセス可能
+             * 他のページはログイン済みユーザーのみ許可
+             */
+            .authorizeHttpRequests(requests -> requests
+                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                .requestMatchers("/").permitAll()
+                // .requestMatchers("/system_administrator").hasRole("SYSTEM_ADMINISTRATOR")
+                // .requestMatchers("/administrator").hasRole("ADMINISTRATOR")
+                // .requestMatchers("/general").hasRole("GENERAL") 
+                .anyRequest().authenticated()
+            );
 
         return http.build();
     }
