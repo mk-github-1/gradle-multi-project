@@ -25,32 +25,43 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    	http
-            /*
-    		.csrf(c -> c.ignoringRequestMatchers(
-   				new AntPathRequestMatcher("/login", HttpMethod.GET.toString())
-    		))
-             */
+        /*
+         * "/css/**"などはアクセス可能
+         * "/login", "logout"は全許可
+         * "/rolename"はhasRoleのユーザーのみアクセス可能
+         * 他のページはログイン済みユーザーのみ許可
+         */
+        http
             .authorizeHttpRequests(requests -> requests
                 .requestMatchers(PathRequest.toStaticResources()
-                    .atCommonLocations()).permitAll()                   // "/css/**"などはアクセス可能 */
-                .requestMatchers("/login").permitAll()	    // ログインページは全許可
-                .requestMatchers("/logout").permitAll()	    // ログインページは全許可
-                // .requestMatchers("/general").hasRole("GENERAL")      // "/general"はROLE_GENERALのみアクセス可能
-                // .requestMatchers("/admin").hasRole("ADMIN")          // "/admin"はROLE_ADMINのみアクセス可能
-                .anyRequest().authenticated()			                // 他のページはログイン済みユーザーのみ許可
+                    .atCommonLocations()).permitAll()                   
+                .requestMatchers("/login").permitAll() 
+                .requestMatchers("/logout").permitAll()
+                // .requestMatchers("/system_administrator").hasRole("SYSTEM_ADMINISTRATOR")
+                // .requestMatchers("/administrator").hasRole("ADMINISTRATOR")
+                // .requestMatchers("/general").hasRole("GENERAL") 
+                .anyRequest().authenticated()
             )
+            /*
+             * ログイン情報の処理URL
+             * ログイン画面のhtml
+             * ログイン成功後のリダイレクトURL
+             * ログイン失敗後のリダイレクトURL
+             * ログイン画面は未ログインでもアクセス可能
+             */
             .formLogin(login -> login
-                .loginProcessingUrl("/login")        // ログイン情報の処理URL
-                .loginPage("/login")                          // ログイン画面のhtml
-                .defaultSuccessUrl("/")               // ログイン成功後のリダイレクトURL
-                .failureUrl("/login?error")    // ログイン失敗後のリダイレクトURL
-                .permitAll()                                            // ログイン画面は未ログインでもアクセス可能
+                .loginProcessingUrl("/login") 
+                .loginPage("/login") 
+                .defaultSuccessUrl("/")
+                .failureUrl("/login?error")
+                .permitAll()
             )
+            // ログアウト成功後のリダイレクトURL
             .logout(logout -> logout
-                .logoutSuccessUrl("/logout")           // ログアウト成功後のリダイレクトURL
+                .logoutSuccessUrl("/logout")
             )
-            .userDetailsService(userDetailsService);                    // userDetailsService
+            // userDetailsService
+            .userDetailsService(userDetailsService);                    
 
         return http.build();
     }
