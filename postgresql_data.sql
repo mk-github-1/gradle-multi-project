@@ -15,7 +15,7 @@ INSERT INTO public.role(role_id, role_name, sort_order, is_deleted, created_at, 
 --------------------------------------------------
 
 -- login_user --
--- ハッシュ値 0000 -> $2a$10$XoTNNlYlYHn2vmfMnmJhU.1M78uA6oOTKj4J9iu.nBeVSwUu1YjyS --
+-- 自習用アプリ用パスワードのハッシュ値 0000 -> $2a$10$XoTNNlYlYHn2vmfMnmJhU.1M78uA6oOTKj4J9iu.nBeVSwUu1YjyS --
 INSERT INTO public.login_user(username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, sort_order, is_deleted, created_at, updated_at, timestamp) VALUES('user1@example.com', '$2a$10$XoTNNlYlYHn2vmfMnmJhU.1M78uA6oOTKj4J9iu.nBeVSwUu1YjyS', true, true, true, true, 1, false, current_timestamp, current_timestamp, 0);
 INSERT INTO public.login_user(username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, sort_order, is_deleted, created_at, updated_at, timestamp) VALUES('user2@example.com', '$2a$10$XoTNNlYlYHn2vmfMnmJhU.1M78uA6oOTKj4J9iu.nBeVSwUu1YjyS', true, true, true, true, 1, false, current_timestamp, current_timestamp, 0);
 INSERT INTO public.login_user(username, password, account_non_expired, account_non_locked, credentials_non_expired, enabled, sort_order, is_deleted, created_at, updated_at, timestamp) VALUES('user3@example.com', '$2a$10$XoTNNlYlYHn2vmfMnmJhU.1M78uA6oOTKj4J9iu.nBeVSwUu1YjyS', true, true, true, true, 1, false, current_timestamp, current_timestamp, 0);
