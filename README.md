@@ -113,16 +113,19 @@ gradle-multi-project/memo/4.gradleビルドエラーする時の確認するこ�
 作業はビルドが通るか確認しながら進めて下さい。 
 
 ## デバッグ実行
-正しく準備できた場合、Gradle build後、SPRING BOOT DASHBOARDからuser-interfaceプロジェクトを実行してデバッグします。  
+正しく準備できた場合、Visual Studio CodeでGradle build後、  
+SPRING BOOT DASHBOARDからuser-interfaceプロジェクトを実行してデバッグします。  
 
 「http://localhost:8080」 を開くとログイン画面が表示されます。  
   
-初回のアプリ起動時はjpa.propertiesの下記の設定で、DBテーブルをdrop->createするようにしています。 
+初回のアプリ起動時はjpa.propertiesの下記の設定で、  
+DBテーブルをdrop->createするようにしています。 
 spring.jpa.properties.hibernate.hbm2ddl.auto=create-drop  
 
 2回目以降はupdateに変更してください。
 Entityがあって、DBに存在しないテーブルが自動で作成されます。  
-ただし不要なテーブルは削除されません。手動で削除するより、テーブル全体を再作成してください。    
+ただし不要なテーブルは削除されません。  
+テーブルを手動で1つずつ削除するより、テーブル全体を削除して再作成してください。    
 
 テーブルが作成できたら、postgresql_data.sqlのDMLでデータを追加してください。  
 
