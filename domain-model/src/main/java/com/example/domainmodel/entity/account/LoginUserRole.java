@@ -20,6 +20,12 @@ public class LoginUserRole {
 	@Column(length = 32, nullable = false)
 	private String roleId;
 
+	@Column(nullable = false)
+    private long sortOrder;
+
+    @Column(nullable = false)
+    private boolean isDeleted;
+
     @Column(nullable = false)
     private OffsetDateTime createdAt;
 

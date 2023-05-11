@@ -26,9 +26,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     	http
+            /*
     		.csrf(c -> c.ignoringRequestMatchers(
-    				new AntPathRequestMatcher("/login", HttpMethod.GET.toString())
+   				new AntPathRequestMatcher("/login", HttpMethod.GET.toString())
     		))
+             */
             .authorizeHttpRequests(requests -> requests
                 .requestMatchers(PathRequest.toStaticResources()
                     .atCommonLocations()).permitAll()                   // "/css/**"などはアクセス可能 */

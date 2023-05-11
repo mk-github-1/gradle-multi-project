@@ -36,6 +36,8 @@ public class LoginUser implements UserDetails {
         boolean accountNonLocked,
         boolean credentialsNonExpired,
         boolean enabled,
+        long sortOrder,
+        boolean isDeleted,
         OffsetDateTime createdAt,
         OffsetDateTime updatedAt,
         long timestamp
@@ -48,6 +50,8 @@ public class LoginUser implements UserDetails {
         this.accountNonLocked = accountNonLocked;
         this.credentialsNonExpired = credentialsNonExpired;
         this.enabled = enabled;
+        this.sortOrder = sortOrder;
+        this.isDeleted = isDeleted;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.timestamp = timestamp;
@@ -73,6 +77,12 @@ public class LoginUser implements UserDetails {
 
 	@Column(nullable = false)
     private boolean enabled;
+
+	@Column(nullable = false)
+    private long sortOrder;
+
+    @Column(nullable = false)
+    private boolean isDeleted;
 
     @Column(nullable = false)
     private OffsetDateTime createdAt;

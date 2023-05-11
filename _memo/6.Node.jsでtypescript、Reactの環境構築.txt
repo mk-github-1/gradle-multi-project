@@ -9,15 +9,14 @@ node -v
 2. typescriptのインストール
 npm install -g typescript
 
-3. package.jsonを準備する
+3. package.json, tsconfig.json, webpack.config.jsを準備する
 このGitHubのRepositoryのものを使用する。必要なものは後で追加する。
 
-4. tsconfig.json
-このGitHubのRepositoryのものを使用する。必要なものは後で追加する。
+ファイル配置: user-interface/src/main/resources
 
-5. webpack.config.jsを準備する
-このGitHubのRepositoryのものを使用する。必要なものは後で追加する。
-
+4. コマンドプロンプトでnpm installをする
+cd user-interface/src/main/resources
+npm install
 
 作成中
 

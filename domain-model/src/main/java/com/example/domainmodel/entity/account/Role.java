@@ -18,6 +18,12 @@ public class Role {
 	@Column(length = 256, nullable = false)
 	private String roleName;
 
+	@Column(nullable = false)
+    private long sortOrder;
+
+    @Column(nullable = false)
+    private boolean isDeleted;
+
     @Column(nullable = false)
     private OffsetDateTime createdAt;
 

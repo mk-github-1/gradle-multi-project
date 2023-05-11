@@ -1,6 +1,6 @@
-/* Spring Data JPAで生成したものより作成する */
+/* 以下は自習用アプリ作成時のテーブルの削除 */
+/* DROP TABLE public.login_user_role CASCADE; */
+DROP TABLE public.role CASCADE;
+DROP TABLE public.login_user CASCADE;
 
-/* 以下は自習用アプリ作成時のテーブル一括削除コード */
-TRUNCATE TABLE public.role
-TRUNCATE TABLE public.user_role
-TRUNCATE TABLE public.login_user
+/* いまのところ、Spring Data JPAで生成したテーブルのDDLの順番を並び替える必要がある */

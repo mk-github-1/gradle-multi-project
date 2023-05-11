@@ -25,6 +25,6 @@ VS Codeを開き、左側のメニューから「設定」をクリックしま�
 **/gradlew.bat
 **/HELP.md
 **/LICENSE
-
+**/node_modules
 
 ※その他、必要に応じて追加する
