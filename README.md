@@ -98,19 +98,11 @@ lc_messages = 'en_US'
 そのまま使用する場合はデータベースの新規作成は不要です。  
 
 ## DB接続準備
-このSpringBootを実行するためにはDB接続設定が必要なため、   
-user-interfaceプロジェクトのjpa.propertiesを編集します。  
-通常のapplication.propertiesはDB以外の用途に使用したいため、jpa.propertiesにDB接続情報を分けています。
-ローカルPCのPostgreSQLに合わせた設定をして下さい。  
-設定はinfrastructureで読み込めるように設定してあります。
+SpringBootアプリを実行するためにはDB接続設定が必要です。  
+user-interfaceプロジェクトにjpa.propertiesがありますのでそちらを参照、必要であれば変更をお願いします。
 
-```jpa.properties
-# Spring database configuration
-spring.datasource.driver-class-name=org.postgresql.Driver
-spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
-spring.datasource.username=postgres
-spring.datasource.password=xxxx
-```
+通常のapplication.propertiesについてはDB以外の用途に使用するため、propertiesを2つに分けています。
+jpa.propertiesの設定はinfrastructureで読み込めるように設定済みです。
 
 ## Gradle buildをする
 Gradle buildの手順は下記を参照して下さい。 
@@ -125,9 +117,17 @@ gradle-multi-project/memo/4.gradleビルドエラーする時の確認するこ�
 
 「http://localhost:8080」 を開くとログイン画面が表示されます。  
   
+初回のアプリ起動時はjpa.propertiesの下記の設定で、DBテーブルをdrop->createするようにしています。 
+spring.jpa.properties.hibernate.hbm2ddl.auto=create-drop  
+
+2回目以降はupdateに変更してください。
 Entityがあって、DBに存在しないテーブルが自動で作成されます。  
-ただし不要なテーブルは削除されません。  
-ログインに必要なデータは自動追加する予定です。
+ただし不要なテーブルは削除されません。手動で削除するより、テーブル全体を再作成してください。    
+
+テーブルが作成できたら、postgresql_data.sqlのDMLでデータを追加してください。  
+
+現在、DBテーブルの列については順番が定義の順にならないです。対策を検討中です。  
+
 
 ## SpringBootプロジェクトでのNode.jsの利用方法
 調査中。  
