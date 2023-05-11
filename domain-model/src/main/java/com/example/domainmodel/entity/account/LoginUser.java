@@ -28,6 +28,10 @@ import org.hibernate.tool.schema.spi.Target;
 public class LoginUser implements UserDetails {
 	private static final long serialVersionUID = 1L;
 
+    public LoginUser() {
+
+    }
+
 	public LoginUser(
 		String username,
 		String password,
@@ -96,7 +100,7 @@ public class LoginUser implements UserDetails {
     
     @OneToMany(mappedBy = "loginUser", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @OrderColumn
-    private Set<LoginUserRole> loginUserRoles = new HashSet<>();
+    private Set<LoginUserRole> loginUserRoles;
     
 	@Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

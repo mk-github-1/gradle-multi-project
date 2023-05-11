@@ -11,7 +11,11 @@ import jakarta.persistence.*;
 @Entity
 @Table(name="login_user_role")
 public class LoginUserRole {
-	// 複合主キー
+	public LoginUserRole() {
+
+    }
+    
+    // 複合主キー
 	@Id
 	@Column(length = 256)
 	private String username;
