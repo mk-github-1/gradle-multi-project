@@ -34,14 +34,19 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         LoginUser loginUser = optinalLoginUser.get();
 
         // UserDetailsを返却
-        return User.builder()
-                .username(loginUser.getUsername())
-                .password(loginUser.getPassword())
-                .authorities(loginUser.getAuthorities())
-                .accountExpired(!loginUser.isAccountNonExpired())
-                .accountLocked(!loginUser.isAccountNonLocked())
-                .credentialsExpired(!loginUser.isCredentialsNonExpired())
-                .disabled(!loginUser.isEnabled())
-                .build();
+        UserDetails userDetails = User.builder()
+            .username(loginUser.getUsername())
+            .password(loginUser.getPassword())
+            // User.builderはdisabled
+            .disabled(!loginUser.isEnabled())
+            // User.builderは条件が反転
+            .accountExpired(!loginUser.isAccountNonExpired())
+            .accountLocked(!loginUser.isAccountNonLocked())
+            .credentialsExpired(!loginUser.isCredentialsNonExpired())
+            // User.builderはauthorities
+            .authorities(loginUser.getAuthorities())
+            .build();
+
+        return userDetails;
     }
 }

@@ -19,10 +19,6 @@ import com.example.domainservice.repository.account.LoginUserRepository;
 
 // コードはコンパイルを通すための下書きです。
 
-/**
- * LoginUserRepositoryImpl
- *
- */
 // @Async
 @Repository
 public class LoginUserRepositoryImpl implements LoginUserRepository {
@@ -41,35 +37,38 @@ public class LoginUserRepositoryImpl implements LoginUserRepository {
     }
 
     /*
-    public CompletableFuture<List<PersonModel>> findAll() {
+    public CompletableFuture<List<LoginUserModel>> findAll() {
         return CompletableFuture.supplyAsync(() -> {
             EntityManager entityManager = entityManagerFactory.createEntityManager();
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-            CriteriaQuery<PersonModel> criteriaQuery = criteriaBuilder.createQuery(PersonModel.class);
+            CriteriaQuery<LoginUserModel> criteriaQuery = criteriaBuilder.createQuery(LoginUserModel.class);
 
-            Root<PersonModel> root = criteriaQuery.from(PersonModel.class);
+            Root<LoginUserModel> root = criteriaQuery.from(LoginUserModel.class);
             criteriaQuery.select(root);
-            List<PersonModel> personModels = entityManager.createQuery(criteriaQuery).getResultList();
+            List<LoginUserModel> loginUserModels = entityManager.createQuery(criteriaQuery).getResultList();
             entityManager.close();
 
-            return personModels;
+            return loginUserModels;
         });
     }
 
-    public CompletableFuture<Optional<PersonModel>> findById(Long id) {
+    public CompletableFuture<Optional<LoginUserModel>> findById(String... id) {
         return CompletableFuture.supplyAsync(() -> {
             EntityManager entityManager = entityManagerFactory.createEntityManager();
-            PersonModel personModel = entityManager.find(PersonModel.class, id);
+            
+            // (int)id[0]でデータ取得できるかは未確認
+            LoginUserModel loginUserModel = entityManager.find(LoginUserModel.class, (int)id[0]);
+            
             entityManager.close();
-            return Optional.ofNullable(personModel);
+            return Optional.ofNullable(loginUserModel);
         });
     }
 
-    public CompletableFuture<Void> create(PersonModel personModel) {
+    public CompletableFuture<Void> create(LoginUserModel loginUserModel) {
         return CompletableFuture.runAsync(() -> {
             EntityManager entityManager = entityManagerFactory.createEntityManager();
             entityManager.getTransaction().begin();
-            entityManager.persist(personModel);
+            entityManager.persist(loginUserModel);
             entityManager.getTransaction().commit();
             entityManager.close();
             return;
@@ -78,11 +77,11 @@ public class LoginUserRepositoryImpl implements LoginUserRepository {
         });
     }
 
-    public CompletableFuture<Void> update(PersonModel personModel) {
+    public CompletableFuture<Void> update(LoginUserModel loginUserModel) {
         return CompletableFuture.runAsync(() -> {
             EntityManager entityManager = entityManagerFactory.createEntityManager();
             entityManager.getTransaction().begin();
-            entityManager.merge(personModel);
+            entityManager.merge(loginUserModel);
             entityManager.getTransaction().commit();
             entityManager.close();
             return;
@@ -95,8 +94,8 @@ public class LoginUserRepositoryImpl implements LoginUserRepository {
         return CompletableFuture.runAsync(() -> {
             EntityManager entityManager = entityManagerFactory.createEntityManager();
             entityManager.getTransaction().begin();
-            PersonModel personModel = entityManager.find(PersonModel.class, id);
-            entityManager.remove(personModel);
+            LoginUserModel loginUserModel = entityManager.find(LoginUserModel.class, id);
+            entityManager.remove(loginUserModel);
             entityManager.getTransaction().commit();
             entityManager.close();
             return;
@@ -108,26 +107,26 @@ public class LoginUserRepositoryImpl implements LoginUserRepository {
     public CompletableFuture<Void> sort(Dictionary<Long, Long> ids) {
         return CompletableFuture.runAsync(() -> {
             EntityManager entityManager = entityManagerFactory.createEntityManager();
-            String sql = "DECLARE @temp AS TABLE ([id] BIGINT NOT NULL, [order] INT NOT NULL);\n";
+            String sql = "DECLARE @temp AS TABLE ([id] BIGINT NOT NULL, [sort_order] INT NOT NULL);\n";
 
             Enumeration<Long> keys = ids.keys();
             while (keys.hasMoreElements()) {
                 Long id = keys.nextElement();
-                Long order = ids.get(id);
-                sql += "INSERT INTO @temp ([id], [order]) VALUES (" + id + ", " + order + ");\n";
+                Long sort_order = ids.get(id);
+                sql += "INSERT INTO @temp ([id], [sort_order]) VALUES (" + id + ", " + sort_order + ");\n";
             }
 
-            sql += "UPDATE [dbo].[m_persons] " +
-                    "SET [order] = B.[order] " +
-                    "FROM [dbo].[m_persons] AS A " +
+            sql += "UPDATE [dbo].[m_login_users] " +
+                    "SET [sort_order] = B.[sort_order] " +
+                    "FROM [dbo].[m_login_users] AS A " +
                     "LEFT OUTER JOIN ( " +
                     "  SELECT C.[id], ROW_NUMBER() OVER ( " +
                     "    ORDER BY " +
                     "      C.[is_deleted] ASC, " +
-                    "      D.[order] ASC, " +
+                    "      D.[sort_order] ASC, " +
                     "      C.[updated_at] DESC " +
                     "  ) AS 'Order' " +
-                    "  FROM [dbo].[m_persons] AS C " +
+                    "  FROM [dbo].[m_login_users] AS C " +
                     "  LEFT OUTER JOIN @temp AS D " +
                     "  ON C.[Id] = D.[Id] " +
                     ") AS B " +

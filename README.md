@@ -23,16 +23,15 @@ Visual Studio Code, pgAdmin 4
 GitHubのリポジトリにアップしているものはgradle buildが通っているものです。  
 ログイン画面まで表示できます。  
 
-5/10 Entity見直し中。DB用の初期データをビルド時に追加できるように準備中。
-
 (やることメモ)  
+・ログインエラー時にエラーメッセージを表示できていないので対応する。
+
 ・LoginUser関係でRepositoryにEntityを使用しているので、Modelを中継させる。
 
 ・サーバー側のプログラムを一通り実装する。AOPによる例外処理を@AfterThrowingで実施する。 
 
 ・ControllerののValidationの設定方法
-validation無し: @RequestBody  
-validation有り: @RequestBody @Validated  
+validation無し: @RequestBody、validation有り: @RequestBody @Validated  
 
 ・データ保存時の作成日時、更新日時の更新、競合チェック処理を追加する。  
 

@@ -5,11 +5,11 @@ import java.time.OffsetDateTime;
 import jakarta.persistence.*;
 
 /**
- * LoginUserRole
+ * LoginUserRole: ログインユーザー権限の中間テーブル
  *
  */
 @Entity
-@Table(name="login_user_role")
+@Table(name="m_login_user_role")
 public class LoginUserRole {
 	public LoginUserRole() {
 
@@ -40,11 +40,11 @@ public class LoginUserRole {
 	@Column(nullable = false)
 	private long timestamp;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "username", referencedColumnName = "username", insertable = false, updatable = false)
     private LoginUser loginUser;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "roleId", referencedColumnName = "roleId", insertable = false, updatable = false)
     private Role role;
 

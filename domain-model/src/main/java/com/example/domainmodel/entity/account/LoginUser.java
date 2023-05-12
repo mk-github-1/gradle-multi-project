@@ -11,20 +11,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.*;
 
-/*
-import org.hibernate.boot.Metadata;
-import org.hibernate.tool.schema.extract.internal.SequenceInformationExtractorNoOpImpl;
-import org.hibernate.tool.schema.spi.Exporter;
-import org.hibernate.tool.schema.spi.SchemaCreator;
-import org.hibernate.tool.schema.spi.Target;
- */
-
 /**
- * LoginUser
+ * LoginUser: ログインユーザー
  *
  */
 @Entity
-@Table(name="login_user")
+@Table(name="m_login_user")
 public class LoginUser implements UserDetails {
 	private static final long serialVersionUID = 1L;
 
@@ -35,11 +27,10 @@ public class LoginUser implements UserDetails {
 	public LoginUser(
 		String username,
 		String password,
-		// Collection<? extends GrantedAuthority> authorities,
+        boolean enabled,
         boolean accountNonExpired,
         boolean accountNonLocked,
         boolean credentialsNonExpired,
-        boolean enabled,
         long sortOrder,
         boolean isDeleted,
         OffsetDateTime createdAt,
@@ -49,11 +40,10 @@ public class LoginUser implements UserDetails {
 
 		this.username = username;
         this.password = password;
-        // this.authorities = authorities;
+        this.enabled = enabled;
         this.accountNonExpired = accountNonExpired;
         this.accountNonLocked = accountNonLocked;
         this.credentialsNonExpired = credentialsNonExpired;
-        this.enabled = enabled;
         this.sortOrder = sortOrder;
         this.isDeleted = isDeleted;
         this.createdAt = createdAt;
@@ -67,25 +57,27 @@ public class LoginUser implements UserDetails {
 
 	@Column(length = 256, nullable = false)
 	private String password;
+    
+    // アカウントが有効かどうかを示すフラグ
+	@Column(nullable = false)
+    private boolean enabled;
 
-    // private Collection<? extends GrantedAuthority> authorities = new HashSet<>();
-
+    // アカウントの有効期限が切れているかどうかを示すフラグ
 	@Column(nullable = false)
     private boolean accountNonExpired;
 
+    // 資格情報の有効期限が切れているかどうかを示すフラグ
 	@Column(nullable = false)
     private boolean accountNonLocked;
 
+    // アカウントがロックされているかどうかを示すフラグ
 	@Column(nullable = false)
     private boolean credentialsNonExpired;
 
 	@Column(nullable = false)
-    private boolean enabled;
-
-	@Column(nullable = false)
     private long sortOrder;
 
-    @Column(nullable = false)
+    @Column
     private boolean isDeleted;
 
     @Column(nullable = false)
@@ -98,14 +90,17 @@ public class LoginUser implements UserDetails {
 	@Column(nullable = false)
 	private long timestamp;
     
-    @OneToMany(mappedBy = "loginUser", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    // ユーザーが持つ権限のリスト、DBからの取得用
+    @OneToMany(mappedBy = "loginUser", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @OrderColumn
-    private Set<LoginUserRole> loginUserRoles;
+    private Set<LoginUserRole> loginUserRoles = new HashSet<>();
     
+    // ユーザーが持つ権限のリスト、Userに渡すためのもの
 	@Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<GrantedAuthority> authorities = new HashSet<>();
-        
+        Set<GrantedAuthority> authorities = new HashSet<>();        
+        Set<LoginUserRole> loginUserRoles = getLoginUserRoles();
+
         for (LoginUserRole loginUserRole : loginUserRoles) {
             authorities.add(new SimpleGrantedAuthority(loginUserRole.getRoleId()));
         }
@@ -142,4 +137,8 @@ public class LoginUser implements UserDetails {
     public boolean isEnabled() {
         return enabled;
     }
+
+    public Set<LoginUserRole> getLoginUserRoles() {
+        return loginUserRoles;
+    }    
 }

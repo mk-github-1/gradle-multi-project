@@ -28,6 +28,9 @@
           自習用アプリとして初期値を設定<br />
           username: user1@example.com, password: 0000
         </p>
+        <p>
+          <span class="alert alert-danger" th:if="${param.error}" style="width: 100%;">Invalid username or password</span>
+        </p>
       </form>
     </div>
   </body>

@@ -18,5 +18,8 @@ npm install -g typescript
 cd user-interface/src/main/resources
 npm install
 
+5. create-react-appをする？
 作成中
 
+※Node.jsはフロント側での利用のみなので、
+Next.jsは対象外だけど、Next.jsは別のプロジェクトでやってみたい。

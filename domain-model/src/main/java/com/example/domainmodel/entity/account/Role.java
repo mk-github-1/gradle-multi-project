@@ -5,11 +5,11 @@ import java.time.OffsetDateTime;
 import jakarta.persistence.*;
 
 /**
- * Role
+ * Role: 権限
  *
  */
 @Entity
-@Table(name="role")
+@Table(name="m_role")
 public class Role {
 	public Role() {
 
