@@ -29,7 +29,11 @@
           username: user1@example.com, password: 0000
         </p>
         <p>
-          <span class="alert alert-danger" th:if="${param.error}" style="width: 100%;">Invalid username or password</span>
+          <span class="alert alert-danger" th:if="${param.error}">Invalid username or password</span>
+        </p>
+        <!-- ログインエラーの場合、エラーメッセージを表示する -->
+        <p th:if="${param.error}">
+          <span class="error-message" th:text="#{login.error(${sec:authentication().exception.message})}"></span>
         </p>
       </form>
     </div>
