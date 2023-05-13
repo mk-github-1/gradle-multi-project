@@ -48,7 +48,8 @@ public class SecurityConfig {
              */
             .authorizeHttpRequests(requests -> requests
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .requestMatchers("/").permitAll()
+                .requestMatchers("/login").permitAll()
+                .requestMatchers("/logout").permitAll()
                 // .requestMatchers("/system_administrator").hasRole("SYSTEM_ADMINISTRATOR")
                 // .requestMatchers("/administrator").hasRole("ADMINISTRATOR")
                 // .requestMatchers("/general").hasRole("GENERAL") 

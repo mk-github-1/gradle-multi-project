@@ -2,8 +2,11 @@ package com.example.domainservice.domain_service_impl.account;
 
 import java.util.*;
 
-import org.springframework.security.core.userdetails.*;
 import org.springframework.stereotype.Service;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.example.domainmodel.entity.account.LoginUser;
 import com.example.domainservice.repository.account.LoginUserRepository;
@@ -47,6 +50,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             .authorities(loginUser.getAuthorities())
             .build();
 
+        // optinalLoginUser.map(loginUser -> new LoginUserDetails(loginUser)); // .orElseThrow(() -> new UsernameNotFoundException("not found"));
+        
         return userDetails;
     }
 }
