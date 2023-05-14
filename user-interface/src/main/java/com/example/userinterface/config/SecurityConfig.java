@@ -35,6 +35,9 @@ public class SecurityConfig {
                 .defaultSuccessUrl("/")
                 .failureUrl("/login?error")
                 .permitAll()
+                .failureHandler((request, response, exception) -> {
+                    exception.printStackTrace();
+                })
             )
             // ログアウト成功後のリダイレクトURL
             .logout(logout -> logout

@@ -31,10 +31,18 @@
         <p>
           <span class="alert alert-danger" th:if="${param.error}">Invalid username or password</span>
         </p>
+
         <!-- ログインエラーの場合、エラーメッセージを表示する -->
-        <p th:if="${param.error}">
-          <span class="error-message" th:text="#{login.error(${sec:authentication().exception.message})}"></span>
+        <!--
+        <p>
+          <span class="error-message" th:if="${param.error}" th:text="${param.error}"></span>
         </p>
+        -->
+        <div th:if="${param.error}">
+          <ul>
+            <li th:each="error : ${#strings.arraySplit(param.error, ',')}" th:text="${error}"></li>
+          </ul>
+        </div>
       </form>
     </div>
   </body>

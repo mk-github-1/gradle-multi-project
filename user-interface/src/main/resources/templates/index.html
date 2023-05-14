@@ -13,6 +13,16 @@
   </head>
   <body>
      <div class="container">
+        <div>
+          <!-- メニュー例 -->
+          <ul>
+            <li><a th:href="@{/}">Top</a></li>
+            <!--
+            <li sec:authorize="hasRole('ROLE_ADMIN')"><a href="/admin">Admin</a></li>
+            -->
+            <li><a th:href="@{/logout}">logout</a></li>
+        </ul>
+      </div>
          Login ok<br />
          <span sec:authentication="principal.loginUser.name"></span>
      </div>
