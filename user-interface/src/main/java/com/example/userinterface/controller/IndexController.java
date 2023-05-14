@@ -19,4 +19,9 @@ public class IndexController {
     public String logout() {
         return "logout";
     }
+    
+    @GetMapping("/error")
+    public String error() {
+        return "error";
+    }
 }
