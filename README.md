@@ -24,7 +24,7 @@ GitHubのリポジトリにアップしているものはgradle buildが通っ�
 ログイン画面まで表示できます。  
 
 (やることメモ)  
-・ログインエラー時にエラーメッセージを表示できていないので対応する。
+・PostgreSQLは列が定義順にならないので、生成されたテーブルから出力されたDDLを組み替える必要があるがある。  
 
 ・LoginUser関係でRepositoryにEntityを使用しているので、Modelを中継させる。
 
@@ -33,7 +33,8 @@ GitHubのリポジトリにアップしているものはgradle buildが通っ�
 ・ControllerののValidationの設定方法
 validation無し: @RequestBody、validation有り: @RequestBody @Validated  
 
-・データ保存時の作成日時、更新日時の更新、競合チェック処理を追加する。  
+・データ保存時の作成日時、更新日時の更新、競合チェック処理を追加する。
+アノテーションで作成日時、更新日時を更新する方法より、saveメソッドを用意してやった方がいいかもいいかも。  
 
 ・application-serviceで追加、更新、削除時にトランザクションを使用できるようにする。  
 
