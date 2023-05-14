@@ -42,7 +42,7 @@ validation無し: @RequestBody、validation有り: @RequestBody @Validated
 
 ・Controllerには、SpringBootのメソッドセキュリティを使用する。  
 
-・非同期処理に対応する。WebFluxと@Asyncの組み合わせ？(クライアント側はjavascript管理下で、axiosで対応予定。)
+・非同期処理に対応する。WebFluxと@Asyncの組み合わせ？クライアント側はjavascriptでaxiosで良さそう。
 
 ・Node.jsのnpmでnode_modulesをインストール、webpackを利用できるようにする。  
 webpack.config.jsの設定をして、javascriptをモジュールとして使用できるようにする。    
