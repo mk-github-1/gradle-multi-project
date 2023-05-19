@@ -1,25 +1,47 @@
 npm・webpackの使い方
 
 1. Node.jsのインストール
-実行後、コマンドプロンプトで実行できるか確認。
+インストール実行後、コマンドプロンプトで実行できるか確認。
 node -v
 
 実行できなければ再起動が必要かも
 
-2. typescriptのインストール
+2. コマンドプロンプトでグローバルにtypescriptをインストールする
 npm install -g typescript
 
-3. package.json, tsconfig.json, webpack.config.jsを準備する
-このGitHubのRepositoryのものを使用する。必要なものは後で追加する。
+3. コマンドプロンプトで以下の4つをグローバルにインストールする
+npm install -g create-react-app webpack webpack-cli webpack-dev-server
 
-ファイル配置: user-interface/src/main/resources
+4. front-endフォルダと、tsconfig.json、webpack.config.jsを準備する
+このGitHubのRepositoryのuserinterface/front-endフォルダとファイルを使用します。
 
-4. コマンドプロンプトでnpm installをする
-cd user-interface/src/main/resources
+--------------------------------------------------
+5. このGitHubのRepositoryを使用する場合はこの手順は不要です。
+
+コマンドプロンプトでcreate-react-appをする
+cd C:\Users\user\vscode-workspace\gradle-multi-project\user-interface
+npm create-react-app front-end
+
+うまくいかないときはこれを実行します
+npm uninstall -g create-react-app
+npm cache clean --force
+rm -rf ~/.npm-global/lib/node_modules/create-react-app
+npm install -g create-react-app
+
+6. 5の手順を使用せず、Repositoryのものを使用するときはnode_modulesをインストールするため、
+コマンドプロンプトでnpm installをしてください。
+cd user-interface/front-end
 npm install
 
-5. create-react-appをする？
-作成中
+7. webpackでビルドする
+cd ./user-interface/front-end
+npm run build
 
-※Node.jsはフロント側での利用のみなので、
-Next.jsは対象外だけど、Next.jsは別のプロジェクトでやってみたい。
+8. gradleと同時にビルドできるように設定する
+
+--------------------------------------------------
+
+99. create-react-appの設定をカスタマイズ可能な状態にする。?
+npm run ejectコマンドを実行して、create-react-appの設定をカスタマイズ可能な状態にします。
+このコマンドを実行すると、設定ファイルやビルドスクリプトなどがプロジェクトのルートディレクトリに生成されます。
+ejectコマンドを実行すると元に戻すことはできませんので、注意してください。
