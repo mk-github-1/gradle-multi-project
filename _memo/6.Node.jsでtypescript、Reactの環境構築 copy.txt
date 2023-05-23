@@ -6,38 +6,38 @@ node -v
 
 実行できなければ再起動が必要かも
 
-2. コマンドプロンプトでグローバルにtypescriptをインストールする
+2. コマンドプロンプトでグローバルにインストールする
 npm install -g typescript
-
-3. コマンドプロンプトで以下の4つをグローバルにインストールする
-npm install -g create-react-app webpack webpack-cli webpack-dev-server
-
-4. front-endフォルダと、tsconfig.json、webpack.config.jsを準備する
-このGitHubのRepositoryのuserinterface/front-endフォルダとファイルを使用します。
+npm install -g create-react-app
+npm install -g webpack webpack-cli webpack-dev-server
 
 --------------------------------------------------
-5. このGitHubのRepositoryを使用する場合はこの手順は不要です。
+3. このGitHubのRepositoryを使用する場合はこの手順は不要です。
 
 コマンドプロンプトでcreate-react-appをする
 cd C:\Users\user\vscode-workspace\gradle-multi-project\user-interface
-npm create-react-app front-end
+npm create-react-app frontend
 
 うまくいかないときはこれを実行します
 npm uninstall -g create-react-app
-npm cache clean --force
+npm cache clean --forc
 rm -rf ~/.npm-global/lib/node_modules/create-react-app
 npm install -g create-react-app
 
-6. 5の手順を使用せず、Repositoryのものを使用するときはnode_modulesをインストールするため、
+tsconfig.json、webpack.config.jsを準備する
+tsconfig.jsonはtsc --initでもデフォルト生成可能
+
+4. Repositoryのものを使用するときはnode_modulesをインストールが必要です。
 コマンドプロンプトでnpm installをしてください。
-cd user-interface/front-end
+cd user-interface/frontend
 npm install
 
-7. webpackでビルドする
-cd ./user-interface/front-end
+5. webpackでビルドする
+cd ./user-interface/frontend
 npm run build
 
-8. gradleと同時にビルドできるように設定する
+6. gradleと同時にビルドできるように設定する
+調査中
 
 --------------------------------------------------
 
